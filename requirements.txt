@@ -1,0 +1,6 @@
+# requirements.txt
+bs4 
+lxml
+
+To run:
+python3 soup.py
