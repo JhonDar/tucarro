@@ -13,7 +13,10 @@ while found_next:
 				car_page = requests.get(car_link)
 				soup_car = BeautifulSoup(car_page.text, "lxml")
 				price = soup_car.find("span", {"class": "price-tag-fraction"}).text
-				print(price)
+				car_features = soup_car.find("ul", {"class": "specs-list"}).find_all("li")
+				for features in car_features:
+					soupAUx = BeautifulSoup(html)
+					print(type(features))
 
 		li_tag = soup.find("li", {"class": "last-child"})
 
