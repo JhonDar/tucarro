@@ -11,14 +11,15 @@ while found_next:
 			for a_tag in h2_tag.find_all('a',href=True):
 				car_link = a_tag["href"]
 				car_page = requests.get(car_link)
-				soup_car = BeautifulSoup(base_page.text, "lxml")
+				soup_car = BeautifulSoup(car_page.text, "lxml")
+				price = soup_car.find("span", {"class": "price-tag-fraction"}).text
+				print(price)
 
 		li_tag = soup.find("li", {"class": "last-child"})
 
 		if li_tag is not(None):
 			for a_tag in li_tag.find_all('a',href=True):
 				next_page=a_tag["href"]
-				print(next_page)
 				base_page = requests.get(next_page)
 				soup = BeautifulSoup(base_page.text, "lxml")
 		else:
